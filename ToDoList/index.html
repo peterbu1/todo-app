@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.101.0">
+    <title>ToDoList</title>
+
+    
+
+    
+
+    
+
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+
+   
+	<link rel="icon" href="images/favicon.ico">
+
+	<meta name="theme-color" content="#712cf9">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="css/signin.css" rel="stylesheet">
+	<script src = "js/jquery-3.6.1.min.js"></script>
+	<script src = "js/todo.js"></script>
+	
+</head>
+<body class="text-center">
+    
+<main class="form-signin w-100 m-auto">
+
+  <!--Regstate <= 0-->
+  <div class = head>
+    <img class="mb-4" src="images/favicon.ico" alt="" width="auto" height="30">
+    <span id = "title">ToDoList</span>
+  </div>
+  <form id = "signInForm">
+	<img class="mb-4" src="images/favicon.ico" alt="" width="72" height="57">
+	<h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+	<div class="form-floating">
+	  <input type="email" class="form-control" name = "loginEmail" id="loginEmail" placeholder="name@example.com">
+	  <label for="loginEmail">Email address</label>
+	</div>
+	<div class="form-floating">
+	  <input type="password" class="form-control" name = "loginPassword" id="loginPassword" placeholder="Password">
+	  <label for="loginPassword">Password</label>
+	</div>
+
+	<div class="checkbox mb-3">
+	  <label>
+		<input type="checkbox" id = "rememberMe" name = "rememberMe" value="remember-me"> Remember me
+	  </label>
+	</div>
+	
+	<button id = "loginBtn" class="w-100 btn btn-lg btn-primary" type="submit">Sign In</button>
+	<div id = "loginMessage" class = "btn btn-info">
+		
+	</div>
+	<br>
+	<span>Don't have an account?</span>
+	<a href = "#" id = "registerBtn">Register</a> <br><span>Forgot your password? </span><a href = "#" id = "forgotPassword">Reset Password</a>
+  </form>
+
+	<!--RegState ==1-->
+  <form id = "registrationForm">
+	<img class="mb-4" src="images/favicon.ico" alt="" width="72" height="57">
+	<h1 class="h3 mb-3 fw-normal">Please register</h1>
+
+	<div class="form-floating">
+	  <input type="text" class="form-control" name = "FirstName" id="FirstName" placeholder="First Name">
+	  <label for="FirstName">First Name</label>
+	</div>
+	<div class="form-floating">
+	  <input type="text" class="form-control" name = "LastName" id="LastName" placeholder="Last Name">
+	  <label for="LastName">Last Name</label>
+	</div>
+	<div class="form-floating">
+	  <input type="email" class="form-control" name = "Email" id="Email" placeholder="example@gmail.com">
+	  <label for="Email">Email</label>
+	</div>
+
+	<button id = "register"class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+	<div id = "registerMessage" class = "btn btn-info">
+		
+	</div>
+	<br>
+
+  </form>
+  <form id = "authenticationForm">
+	<h1 class="h3 mb-3 fw-normal">Please enter authentication code</h1>
+	<div class="form-floating">
+		<input type="text" class="form-control" name = "Acode" id="aCode" placeholder="Authorization code">
+		<label for="aCode">Authentication code</label>
+	</div>
+	<button id = "authBtn1" class="w-100 btn btn-lg btn-primary" type="submit">Authenticate</button>
+	<div id = "authMessage" class = "btn btn-info">
+		
+	</div><br>
+	<a class = "backToHome" href = "#">Back</a>
+  </form>
+  
+  <!--Regstate == 2-->
+  <form id = "setPasswordForm">
+	<img class="mb-4" src="images/favicon.ico" alt="" width="72" height="57">
+	<h1 class="h3 mb-3 fw-normal">Please set password</h1>
+
+	<div class="form-floating">
+	  <input type="password" class="form-control" name = "password1" id="setPassword1" placeholder="New Password">
+	  <label for="Password">Password</label>
+	</div>
+	<div class="form-floating">
+	  <input type="password" class="form-control" name = "password2" id="setPassword2" placeholder="Confirm Password">
+	  <label for="Password2">Confirm Password</label>
+	</div>
+
+	<button id = "setPasswordBtn" class="w-100 btn btn-lg btn-primary" type="submit">Set Password</button>
+	<div id = "setPasswordMessage" class = "btn btn-info">
+		
+	</div><br>
+	<a class = "backToHome" href = "#">Home</a> 
+  </form>
+
+  <!--Regstate ==3-->
+  <form id = "resetPasswordForm">
+	<img class="mb-4" src="images/favicon.ico" alt="" width="72" height="57">
+	<h1 class="h3 mb-3 fw-normal">Enter Email to get authentication code</h1>
+
+	<div class="form-floating">
+	  <input type="email" class="form-control" name = "resetEmail"id="resetPasswordEmail" placeholder="Email">
+	  <label for="resetPasswordEmail">Email</label>
+	</div>
+	
+	<button id = "sendCode"class="w-100 btn btn-lg btn-primary" type="submit">Send code</button>
+	<div id = "resetPasswordFormMessage" class = "btn btn-info">
+		
+	</div>
+	<br>
+	
+  </form>
+
+  <form id = "authenticationForm2">
+	<h1 class="h3 mb-3 fw-normal">Enter authentication code</h1>
+
+	<div class="form-floating">
+		<input type="text" class="form-control" name = "Acode2" id="aCode2" placeholder="Authorization code">
+		<label for="aCode2">Authentication code</label>
+	</div>
+	
+	<button id = "reAuthBtn"class="w-100 btn btn-lg btn-primary" type="submit">Authenticate</button>
+	<div id = "authMessage2" class = "btn btn-info">
+	
+	</div>
+	<br>
+	<a href = "#" class = "backToHome">Home</a> 
+  </form>
+
+</main>
+
+
+    
+</body>
+</html>
